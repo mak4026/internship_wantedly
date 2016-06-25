@@ -1,6 +1,6 @@
 # 概要
 インターンシップの課題提出用のプロジェクトです。
-Rails Tutorial(http://railstutorial.jp/)をかなり参考にしています。
+Rails Tutorial(http://railstutorial.jp/ )をかなり参考にしています。
 
 # 目標
 - 必須課題をクリアする
