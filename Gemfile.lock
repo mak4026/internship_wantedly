@@ -59,6 +59,9 @@ GEM
       railties (>= 4.1.0, < 5.1)
       responders
       warden (~> 1.2.3)
+    devise-better_routes (0.0.4)
+      devise (>= 3.0.0.rc)
+      rails (>= 4.0.0.rc1)
     devise-bootstrap-views (0.0.8)
     devise-i18n (1.1.0)
     devise-i18n-views (0.3.7)
@@ -201,6 +204,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   devise
+  devise-better_routes
   devise-bootstrap-views
   devise-i18n
   devise-i18n-views
