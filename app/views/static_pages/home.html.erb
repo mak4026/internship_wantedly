@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-ログイン済み
+<h2>ログイン済み</h2>
 <% else %>
 <div class="center jumbotron">
 
@@ -7,6 +7,6 @@
     インターンシップの課題プログラムのページです。
   </h2>
 
-  <%= link_to "Sign up", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+  <%= link_to "Sign up", new_user_path, class: "btn btn-lg btn-primary" %>
 </div>
 <% end %>
