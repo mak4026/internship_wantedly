@@ -35,4 +35,28 @@ class UserTest < ActiveSupport::TestCase
   	@user.password_confirmation = "fugafuga"
   	assert_not @user.valid?
   end
+
+  test "should add skill, check having skill?" do
+    john = users(:john)
+    archer = users(:archer)
+    cpp = skills(:cpp)
+    assert_not john.skill_having?(cpp)
+    archer.plus_one(john, cpp)
+    assert john.skill_having?(cpp)
+    john.delete_skill(cpp)
+    assert_not john.skill_having?(cpp)
+  end
+
+  test "たくさん+1されたスキルを削除する" do
+    john = users(:john)
+    archer = users(:archer)
+    lana = users(:lana)
+    cpp = skills(:cpp)
+    assert_not john.skill_having?(cpp)
+    archer.plus_one(john, cpp)
+    lana.plus_one(john,cpp)
+    assert john.skill_having?(cpp)
+    john.delete_skill(cpp)
+    assert_not john.skill_having?(cpp)
+  end  
 end
