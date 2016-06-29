@@ -58,5 +58,27 @@ class UserTest < ActiveSupport::TestCase
     assert john.skill_having?(cpp)
     john.delete_skill(cpp)
     assert_not john.skill_having?(cpp)
-  end  
+  end
+
+  test "has_skill should be destroyed" do
+    john = users(:john)
+    archer = users(:archer)
+    cpp = skills(:cpp)
+    john.plus_one(john, cpp)
+    archer.plus_one(john, cpp)
+    assert_difference 'Relationship.count', -2 do
+      john.destroy
+    end
+  end
+
+  test "add_skill should be destroyed" do
+    john = users(:john)
+    archer = users(:archer)
+    cpp = skills(:cpp)
+    john.plus_one(john, cpp)
+    archer.plus_one(john, cpp)
+    assert_difference 'Relationship.count', -1 do
+      archer.destroy
+    end
+  end
 end

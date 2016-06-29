@@ -12,4 +12,13 @@ class SkillTest < ActiveSupport::TestCase
   	@skill.name = nil
   	assert_not @skill.valid?
   end
+
+  test "relationship should be destroyed" do
+    john = users(:john)
+    archer = users(:archer)
+    archer.plus_one(john, @skill)
+    assert_difference 'Relationship.count', -1 do
+      @skill.destroy
+    end
+  end
 end
