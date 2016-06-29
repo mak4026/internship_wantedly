@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 50 }
   has_many :has_skill, class_name: "Relationship", dependent: :destroy
   has_many :add_skill, class_name: "Relationship", foreign_key: "adder_id", dependent: :destroy
-  has_many :skill, through: :has_skill
+  has_many :skills, through: :has_skill
+
 
 
   def plus_one(other_user, ability)
@@ -20,6 +21,11 @@ class User < ActiveRecord::Base
   end
 
   def skill_having?(ability)
-  	skill.include?(ability)
+  	skills.include?(ability)
+  end
+
+  def skills_list
+    ordered_keys = skills.group('skills.id').order('count_all desc').count.keys
+    skills.group(:id).order_as_specified(id: ordered_keys)
   end
 end
