@@ -5,3 +5,15 @@ cpp:
 
 rails:
   name: "Ruby on Rails"
+
+ruby:
+  name: "Ruby"
+
+php:
+  name: "PHP"
+
+java:
+  name: "Java"
+
+lisp:
+  name: "Lisp"

@@ -35,4 +35,64 @@ class UserTest < ActiveSupport::TestCase
   	@user.password_confirmation = "fugafuga"
   	assert_not @user.valid?
   end
+
+  test "should add skill, check having skill?" do
+    john = users(:john)
+    archer = users(:archer)
+    cpp = skills(:cpp)
+    assert_not john.skill_having?(cpp)
+    archer.plus_one(john, cpp)
+    assert john.skill_having?(cpp)
+    john.delete_skill(cpp)
+    assert_not john.skill_having?(cpp)
+  end
+
+  test "たくさん+1されたスキルを削除する" do
+    john = users(:john)
+    archer = users(:archer)
+    lana = users(:lana)
+    cpp = skills(:cpp)
+    assert_not john.skill_having?(cpp)
+    archer.plus_one(john, cpp)
+    lana.plus_one(john,cpp)
+    assert john.skill_having?(cpp)
+    john.delete_skill(cpp)
+    assert_not john.skill_having?(cpp)
+  end
+
+  test "has_skill should be destroyed" do
+    john = users(:john)
+    archer = users(:archer)
+    cpp = skills(:cpp)
+    john.plus_one(john, cpp)
+    archer.plus_one(john, cpp)
+    assert_difference 'Relationship.count', -2 do
+      john.destroy
+    end
+  end
+
+  test "add_skill should be destroyed" do
+    john = users(:john)
+    archer = users(:archer)
+    cpp = skills(:cpp)
+    john.plus_one(john, cpp)
+    archer.plus_one(john, cpp)
+    assert_difference 'Relationship.count', -1 do
+      archer.destroy
+    end
+  end
+
+  test "skill list correct?" do
+    john = users(:john)
+    archer = users(:archer)
+    cpp = skills(:cpp)
+    ruby = skills(:ruby)
+    john.plus_one(john, ruby)
+    archer.plus_one(john, cpp)
+    john.plus_one(john, cpp)
+    assert_equal cpp, john.skills_list[0].first
+    assert_equal ruby, john.skills_list[0].second
+    assert_equal 2, john.skills_list[1][cpp.id]
+    assert_equal 1, john.skills_list[1][ruby.id]
+  end
 end
