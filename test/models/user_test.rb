@@ -81,4 +81,18 @@ class UserTest < ActiveSupport::TestCase
       archer.destroy
     end
   end
+
+  test "skill list correct?" do
+    john = users(:john)
+    archer = users(:archer)
+    cpp = skills(:cpp)
+    ruby = skills(:ruby)
+    john.plus_one(john, ruby)
+    archer.plus_one(john, cpp)
+    john.plus_one(john, cpp)
+    assert_equal cpp, john.skills_list[0].first
+    assert_equal ruby, john.skills_list[0].second
+    assert_equal 2, john.skills_list[1][cpp.id]
+    assert_equal 1, john.skills_list[1][ruby.id]
+  end
 end

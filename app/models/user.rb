@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   end
 
   def skills_list
-    ordered_keys = skills.group('skills.id').order('count_all desc').count.keys
-    skills.group(:id).order_as_specified(id: ordered_keys)
+    ordered_counts = skills.group('skills.id').order('count_all desc').count
+    [skills.group(:id).order_as_specified(id: ordered_counts.keys), ordered_counts]
   end
 end

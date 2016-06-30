@@ -1,3 +1,4 @@
 <li id="skill-<%= skill.id %>">
-<%= skill.name %> <%= skill.relationships.where(skill_id: skill.id).count %>
+<%= skill.name %>
+<%= counts[skill.id] %>
 </li>

@@ -6,6 +6,7 @@ class UserListsController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @skills = @user.skills_list.paginate(page: params[:page])
+    _skills, @counts = @user.skills_list
+    @skills = _skills.paginate(page: params[:page])
   end
 end
