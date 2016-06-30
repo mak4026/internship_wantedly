@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get 'users' => "user_lists#index", as: 'users'
   get 'users/:id' => "user_lists#show", as: 'user'
   devise_for :users, path_names: {current_user: 'me'}
+  resources :relationships, only: [:create, :destroy]
+  resources :skills, only: [:create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
