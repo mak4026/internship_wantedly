@@ -61,38 +61,27 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "has_skill should be destroyed" do
-    john = users(:john)
-    archer = users(:archer)
-    cpp = skills(:cpp)
-    john.plus_one(john, cpp)
-    archer.plus_one(john, cpp)
-    assert_difference 'Relationship.count', -2 do
-      john.destroy
+    lana = users(:lana)
+    assert_difference 'Relationship.count', -1 do
+      lana.destroy
     end
   end
 
-  test "add_skill should be destroyed" do
+  test "has_skill & add_skill should be destroyed" do
     john = users(:john)
-    archer = users(:archer)
-    cpp = skills(:cpp)
-    john.plus_one(john, cpp)
-    archer.plus_one(john, cpp)
-    assert_difference 'Relationship.count', -1 do
-      archer.destroy
+    assert_difference 'Relationship.count', -5 do
+      john.destroy
     end
   end
 
   test "skill list correct?" do
     john = users(:john)
     archer = users(:archer)
-    cpp = skills(:cpp)
+    java = skills(:java)
     ruby = skills(:ruby)
-    john.plus_one(john, ruby)
-    archer.plus_one(john, cpp)
-    john.plus_one(john, cpp)
-    assert_equal cpp, john.skills_list[0].first
+    assert_equal java, john.skills_list[0].first
     assert_equal ruby, john.skills_list[0].second
-    assert_equal 2, john.skills_list[1][cpp.id]
+    assert_equal 2, john.skills_list[1][java.id]
     assert_equal 1, john.skills_list[1][ruby.id]
   end
 end

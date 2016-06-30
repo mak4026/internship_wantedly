@@ -8,5 +8,6 @@ class UserListsController < ApplicationController
     @user = User.find(params[:id])
     _skills, @counts = @user.skills_list
     @skills = _skills.paginate(page: params[:page])
+    @new_skill = Skill.new
   end
 end

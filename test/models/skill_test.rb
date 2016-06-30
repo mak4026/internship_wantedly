@@ -13,6 +13,11 @@ class SkillTest < ActiveSupport::TestCase
   	assert_not @skill.valid?
   end
 
+  test "skill is unique" do
+    dup_s = @skill.dup
+    assert_not dup_s.valid?
+  end
+
   test "relationship should be destroyed" do
     john = users(:john)
     archer = users(:archer)

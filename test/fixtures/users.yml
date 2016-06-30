@@ -5,8 +5,8 @@
 # below each fixture, per the syntax in the comments below
 #
 john:
-  name: "john"
-  email: "john@example.com"
+  name: john
+  email: john@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
 
 archer:
@@ -17,6 +17,11 @@ archer:
 lana:
   name: Lana Kane
   email: hands@example.gov
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+
+umaru:
+  name: umaru-chan
+  email: umaru@gmai.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
 
 <% 30.times do |n| %>
