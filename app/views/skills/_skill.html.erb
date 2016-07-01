@@ -1,4 +1,13 @@
 <li id="skill-<%= skill.id %>">
-<%= skill.name %>
-<%= counts[skill.id] %>
+  <div class="row">
+  <span class="col-md-1">
+    <span class="count"><%= counts[skill.id] %></span>
+  </span>
+  <span class="col-md-9">
+    <span class="name"><%= skill.name %></span>
+  </span>
+  <span class="col-md-2">
+    <%= render 'plus_form', skill: skill %>
+  </span>
+  </div>
 </li>
