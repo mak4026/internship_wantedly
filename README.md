@@ -9,3 +9,7 @@ Rails Tutorial(http://railstutorial.jp/ )をかなり参考にしています。
 
 # 動作している様子
 ![動作](https://raw.githubusercontent.com/mak4026/internship_wantedly/master/readme.gif)
+
+# heroku
+- 以下にデプロイしています。
+  - https://red-keener-27609.herokuapp.com/
