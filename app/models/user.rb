@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
     _add_skill.save
   end
 
+  def plussed?(other_user, ability)
+    add_skill.exists?(user_id: other_user.id, skill_id: ability.id)
+  end
+
   def delete_skill(ability)
     abilities = has_skill.where(skill_id: ability.id).find_each{ |a|
     	a.destroy

@@ -12,5 +12,10 @@ class RelationshipsController < ApplicationController
   end
 
   def destroy
+    relation = current_user.add_skill.find(params[:id])
+    skill = Skill.find(relation.skill_id)
+    relation.destroy
+    flash[:notice] = skill.name+" を -1 しました"
+    redirect_to user_path id: relation.user_id
   end
 end
