@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
   get 'users' => "user_lists#index", as: 'users'
-  get 'users/:id' => "user_lists#show", as: 'user'
   devise_for :users, path_names: {current_user: 'me'}
+  get 'users/:id' => "user_lists#show", as: 'user'
+
   resources :relationships, only: [:create, :destroy]
   resources :skills, only: [:create, :destroy]
 
