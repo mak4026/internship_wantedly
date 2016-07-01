@@ -1,0 +1,20 @@
+zero:
+  user: john
+  adder: umaru
+  skill: ruby
+one:
+  user: john
+  adder: john
+  skill: java
+two:
+  user: archer
+  adder: john
+  skill: php
+three:
+  user: john
+  adder: archer
+  skill: java
+four:
+  user: lana
+  adder: john
+  skill: java

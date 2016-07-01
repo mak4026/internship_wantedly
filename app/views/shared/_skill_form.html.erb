@@ -1,0 +1,8 @@
+<%= form_for(@new_skill) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div><%= hidden_field_tag :added_id, @user.id %></div>
+  <div class="field">
+    <%= f.text_area :name, placeholder: "新しいスキルを追加する" %>
+  </div>
+  <%= f.submit "新しいスキルを追加する", class: "btn btn-primary" %>
+<% end %>

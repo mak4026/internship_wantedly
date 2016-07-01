@@ -38,8 +38,9 @@ user = users.first
 skills = Skill.all
 skill = skills.first
 user.plus_one(user,skill)
-followers = users[2..20]
-skill = skills[2]
-followers.each { |follower|
-  follower.plus_one(user,skill)
-}
+for i in 1..10
+  skill = skills[(7*i)%10]
+  for j in 1..2*i
+    users[j].plus_one(user,skill)
+  end
+end

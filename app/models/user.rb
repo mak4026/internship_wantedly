@@ -11,7 +11,12 @@ class User < ActiveRecord::Base
 
 
   def plus_one(other_user, ability)
-    add_skill.create(user_id: other_user.id, skill_id: ability.id)
+    _add_skill = add_skill.new(user_id: other_user.id, skill_id: ability.id)
+    _add_skill.save
+  end
+
+  def plussed?(other_user, ability)
+    add_skill.exists?(user_id: other_user.id, skill_id: ability.id)
   end
 
   def delete_skill(ability)

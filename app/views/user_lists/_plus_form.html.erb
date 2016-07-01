@@ -1,0 +1,12 @@
+<% if current_user.plussed?(@user, skill) %>
+  <%= form_for(current_user.add_skill.find_by(user_id: @user.id, skill_id: skill.id),
+             html: { method: :delete }) do |f| %>
+  <%= f.submit "-1", class: "btn" %>
+  <% end %>
+<% else %>
+  <%= form_for(current_user.add_skill.build) do |f| %>
+    <div><%= hidden_field_tag :skill_id, skill.id %></div>
+    <div><%= hidden_field_tag :user_id, @user.id %></div>
+    <%= f.submit "+1", class: "btn btn-primary btn-large" %>
+  <% end %>
+<% end %>
