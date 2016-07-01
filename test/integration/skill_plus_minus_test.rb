@@ -25,6 +25,7 @@ class SkillPlusMinusTest < ActionDispatch::IntegrationTest
     assert_difference 'Relationship.count', -1 do
       delete relationship_path relationships(:three)
     end
+    assert_redirected_to @other
   end
 
   test "can't another adder skill -1" do
