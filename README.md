@@ -8,4 +8,4 @@ Rails Tutorial(http://railstutorial.jp/ )をかなり参考にしています。
   - +1をキャンセルできる
 
 # 動作している様子
-![動作](https://raw.githubusercontent.com/mak4026/internship_wantedly/readme.gif)
+![動作](https://raw.githubusercontent.com/mak4026/internship_wantedly/master/readme.gif)
